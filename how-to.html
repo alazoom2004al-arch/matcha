@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل التحضير | Grace Matcha</title>
+    <style>
+        :root { --grace-pink: #FF85A2; --soft-bg: #FFF5F7; --matcha-green: #89B37E; --deep-pink: #FF5C8A; }
+        
+        body { 
+            background-color: var(--soft-bg); 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; padding: 0; 
+            display: flex; flex-direction: column; align-items: center; 
+            color: #444;
+        }
+
+        /* الهيدر مع زر العودة */
+        .nav-header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            width: 95%; max-width: 850px; margin: 20px auto; background: white; 
+            padding: 15px 20px; border-radius: 50px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
+            position: sticky; top: 15px; z-index: 1000;
+        }
+
+        .header-title { color: var(--deep-pink); font-weight: 900; font-size: 1.1rem; flex-grow: 1; text-align: center; }
+
+        .back-btn {
+            background: var(--deep-pink); color: white; border: none; 
+            padding: 10px 20px; border-radius: 25px; cursor: pointer; 
+            font-weight: bold; text-decoration: none; font-size: 0.85rem;
+            transition: 0.3s; display: flex; align-items: center; gap: 5px;
+        }
+        .back-btn:hover { transform: scale(1.05); opacity: 0.9; }
+
+        .guide-container { width: 90%; max-width: 700px; margin-top: 20px; text-align: center; }
+
+        .main-title { color: var(--matcha-green); font-size: 2rem; margin-bottom: 10px; }
+        .sub-title { color: #888; font-size: 1rem; margin-bottom: 40px; }
+
+        /* خطوات التحضير */
+        .step-card {
+            background: white; border-radius: 30px; padding: 25px; 
+            margin-bottom: 25px; border: 2px solid #FFE0E6;
+            display: flex; align-items: center; gap: 20px;
+            transition: 0.3s; text-align: right;
+        }
+
+        .step-number {
+            background: var(--matcha-green); color: white;
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 1.2rem; flex-shrink: 0;
+        }
+
+        .step-content h3 { margin: 0; color: var(--deep-pink); font-size: 1.1rem; }
+        .step-content p { margin: 5px 0 0; color: #666; font-size: 0.9rem; line-height: 1.5; }
+
+        /* زر العودة السفلي */
+        .bottom-action { margin: 40px 0; }
+        .shop-now-btn {
+            background: var(--matcha-green); color: white; text-decoration: none;
+            padding: 15px 40px; border-radius: 20px; font-weight: bold;
+            display: inline-block; box-shadow: 0 10px 20px rgba(137, 179, 126, 0.2);
+            transition: 0.3s;
+        }
+        .shop-now-btn:hover { transform: translateY(-5px); }
+
+        footer { margin-bottom: 40px; color: var(--deep-pink); font-weight: bold; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+    <div class="nav-header">
+        <!-- زر العودة للمنتجات في الأعلى -->
+        <a href="products.html" class="back-btn">🛒 المنتجات</a>
+        <div class="header-title">GRACE GUIDE</div>
+        <a href="index.html" class="back-btn" style="background: #eee; color: #666;">🏠</a>
+    </div>
+
+    <div class="guide-container">
+        <h1 class="main-title">سر كوب الماتشا المثالي 🍵</h1>
+        <p class="sub-title">خطوات بسيطة لتحويل الماتشا إلى تجربة فاخرة في منزلك</p>
+
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3>نخل الماتشا</h3>
+                <p>استخدمي المنخل لنخل 1-2 جرام من مسحوق غريس ماتشا للتخلص من التكتلات وضمان قوام ناعم.</p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3>درجة حرارة الماء</h3>
+                <p>أضيفي الماء الساخن (80 درجة مئوية).
+تجنبي الماء المغلي لكي لا يتغير طعم الماتشا.</p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3>الخفق بحركة W</h3>
+                <p>استخدمي خفاقة البامبو واخفقي بسرعة بحركة تشبه حرف W حتى تظهر الرغوة الكثيفة.</p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h3>إضافة الحليب والسيروب</h3>
+                <p>أضيفي الحليب المفضل لديك وسيروب غريس (فراولة أو كراميل) واستمتعي!</p>
+            </div>
+        </div>
+
+        <!-- زر العودة السفلي لطلب المنتجات -->
+        <div class="bottom-action">
+            <p style="color: #888; font-size: 0.9rem; margin-bottom: 15px;">جاهزة لتجربة الأدوات والمنتجات؟</p>
+            <a href="products.html" class="shop-now-btn">العودة لصفحة المنتجات 🛍️</a>
+        </div>
+
+        <footer>صُنع بحب في متجر غريس 🌸</footer>
+    </div>
+
+</body>
+</html>
