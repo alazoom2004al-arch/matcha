@@ -1,29 +1,53 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  غريس ماتشا- Grace Matcha</title>
-    <style>
-        :root { --bright-pink: #FF85A2; --soft-pink: #FFF5F7; --dark-pink: #FF5C8A; }
-        body { background-color: var(--soft-pink); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: 'Segoe UI', sans-serif; }
-        .profile-container { text-align: center; max-width: 400px; width: 85%; padding: 30px; background: white; border: 3px double var(--bright-pink); border-radius: 20px; box-shadow: 0 10px 30px rgba(255, 133, 162, 0.1); }
-        .profile-img { width: 90px; height: 90px; background: var(--bright-pink); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold; border: 3px solid white; }
-        h1 { color: var(--dark-pink); font-size: 1.6rem; }
-        .link-card { display: block; background-color: white; color: var(--dark-pink); text-decoration: none; padding: 15px; margin-bottom: 15px; border: 1.5px solid var(--bright-pink); border-radius: 12px; transition: 0.3s; font-weight: bold; }
-        .link-card:hover { background-color: var(--bright-pink); color: white; transform: translateY(-3px); }
-        .dev-badge { margin-top: 25px; font-family: monospace; font-size: 0.75rem; color: var(--bright-pink); }
-    </style>
-</head>
-<body>
-    <div class="profile-container">
-        <div class="profile-img">G</div>
-        <h1> Grace Matcha </h1>
-        <p style="color: #888; font-style: italic;">سحر الماتشا باللون الوردي</p>
-        <a href="https://www.tiktok.com/@matcha.grace2" class="link-card">تابعنا على تيك توك 🎥</a>
-        <a href="products.html" class="link-card">زيارة المتجر وتسوق المنتجات 🛒</a>
-        <a href="https://wa.me/966563691555" class="link-card">استفسار مباشر واتساب 🍵</a>
-        <div class="dev-badge">&lt;coded_by_grace_matcha /&gt;</div>
-    </div>
-</body>
+<!DOCTYPE html>  
+<html lang="ar" dir="rtl">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title> غريس ماتشا- Grace Matcha</title>  
+    <style>  
+        :root { --bright-pink: #FF85A2; --soft-pink: #FFF5F7; --dark-pink: #FF5C8A; }  
+        body { background-color: var(--soft-pink); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: 'Segoe UI', sans-serif; }  
+        .profile-container { text-align: center; max-width: 400px; width: 85%; padding: 30px; background: white; border: 3px double var(--bright-pink); border-radius: 20px; box-shadow: 0 10px 30px rgba(255, 133, 162, 0.1); }  
+        
+        /* تعديل الدائرة لتناسب اللوجو */
+        .profile-img { 
+            width: 100px; 
+            height: 100px; 
+            background: white; 
+            border-radius: 50%; 
+            margin: 0 auto 15px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border: 3px solid var(--bright-pink); 
+            overflow: hidden; /* لقص الصورة بشكل دائري */
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* لضمان ملء الصورة للدائرة دون تمطيط */
+        }
+
+        h1 { color: var(--dark-pink); font-size: 1.6rem; }  
+        .link-card { display: block; background-color: white; color: var(--dark-pink); text-decoration: none; padding: 15px; margin-bottom: 15px; border: 1.5px solid var(--bright-pink); border-radius: 12px; transition: 0.3s; font-weight: bold; }  
+        .link-card:hover { background-color: var(--bright-pink); color: white; transform: translateY(-3px); }  
+        .dev-badge { margin-top: 25px; font-family: monospace; font-size: 0.75rem; color: var(--bright-pink); }  
+    </style>  
+</head>  
+<body>  
+    <div class="profile-container">  
+        <!-- وضع اللوجو هنا -->
+        <div class="profile-img">
+            <img src="image.png" alt="Grace Matcha Logo">
+        </div>
+        
+        <h1> Grace Matcha </h1>  
+        <p style="color: #888; font-style: italic;">سحر الماتشا باللون الوردي</p>  
+        <a href="https://www.tiktok.com/@matcha.grace2" class="link-card">تابعنا على تيك توك 🎥</a>  
+        <a href="products.html" class="link-card">زيارة المتجر وتسوق المنتجات 🛒</a>  
+        <a href="https://wa.me/966563691555" class="link-card">استفسار مباشر واتساب 🍵</a>  
+        <div class="dev-badge">&lt;coded_by_grace_matcha /&gt;</div>  
+    </div>  
+</body>  
 </html>
