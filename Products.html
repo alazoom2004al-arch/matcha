@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grace Matcha | متجر غريس ماتشا</title>
+    <style>
+        :root { --grace-pink: #FF85A2; --soft-bg: #FFF5F7; --deep-pink: #FF5C8A; --gold: #FFD700; --matcha-green: #89B37E; }
+        
+        body { 
+            background-color: var(--soft-bg); 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; padding: 0; 
+            display: flex; flex-direction: column; align-items: center; 
+            min-height: 100vh; color: #444;
+        }
+
+        /* الهيدر */
+        .nav-header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            width: 95%; max-width: 850px; margin: 20px auto; background: white; 
+            padding: 15px 20px; border-radius: 50px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
+            position: sticky; top: 15px; z-index: 1000; 
+        }
+
+        .header-title { 
+            color: var(--deep-pink); font-weight: 900; font-size: 1.4rem; 
+            text-align: center; flex-grow: 1; letter-spacing: 2px; 
+            text-transform: uppercase; font-family: 'Georgia', serif; 
+        }
+
+        .nav-buttons { display: flex; gap: 8px; }
+
+        .nav-icon-btn {
+            background: var(--deep-pink); color: white; border: none; 
+            padding: 10px 15px; border-radius: 25px; cursor: pointer; 
+            font-weight: bold; text-decoration: none; font-size: 0.85rem; transition: 0.3s;
+        }
+
+        .guide-btn { background: var(--matcha-green); }
+
+        .category-container { width: 100%; max-width: 1000px; text-align: center; padding-bottom: 40px; }
+        .category-title { color: var(--deep-pink); margin: 40px 0 20px; font-size: 1.5rem; font-weight: bold; position: relative; display: inline-block; }
+        .category-title::after { content: ''; width: 60%; height: 3px; background: var(--grace-pink); position: absolute; bottom: -5px; left: 20%; border-radius: 10px; }
+
+        .grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 25px; width: 90%; margin: 0 auto; justify-items: center;
+        }
+
+        .card { 
+            background: white; border-radius: 30px; padding: 20px; 
+            border: 1px solid #FFE0E6; transition: 0.3s; 
+            display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 200px;
+        }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(255,133,162,0.15); }
+        
+        .product-icon-box { 
+            width: 80px; height: 80px; 
+            background: var(--soft-bg);
+            border-radius: 20px; margin-bottom: 15px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 2.5rem; color: var(--grace-pink);
+            border: 2px dashed var(--grace-pink);
+        }
+
+        .product-name { font-size: 1rem; margin: 5px 0; color: var(--deep-pink); font-weight: bold; }
+        .product-desc { font-size: 0.75rem; color: #777; min-height: 45px; line-height: 1.4; margin-bottom: 10px; }
+        .price { color: var(--deep-pink); font-weight: 800; font-size: 1.1rem; }
+        .buy-btn { background: var(--grace-pink); color: white; border: none; padding: 12px; border-radius: 15px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 10px; }
+
+        .promo-banner {
+            background: white; width: 90%; max-width: 700px; padding: 30px; border-radius: 40px;
+            border: 2px dashed var(--matcha-green); margin: 40px auto; text-align: center;
+        }
+
+        /* --- تنسيق بطاقة "شاهد الدليل" قبل التعليقات --- */
+        .guide-highlight-card {
+            width: 90%; max-width: 650px; margin: 50px auto -30px auto;
+            background: white; border-radius: 35px; border: 2.5px solid var(--matcha-green);
+            padding: 25px; display: flex; align-items: center; justify-content: space-between;
+            text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 30px rgba(137, 179, 126, 0.1);
+            position: relative; overflow: hidden;
+        }
+        .guide-highlight-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(137, 179, 126, 0.2); background: #fdfdfd; }
+        .guide-highlight-card::before { content: '✨'; position: absolute; left: 15px; top: 10px; opacity: 0.5; font-size: 1.2rem; }
+        
+        .guide-icon-circle { 
+            width: 70px; height: 70px; background: var(--soft-bg); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 2.2rem;
+            border: 2px solid #f0f0f0; flex-shrink: 0;
+        }
+        .guide-info { flex-grow: 1; margin-right: 20px; text-align: right; }
+        .guide-info h4 { margin: 0; color: var(--matcha-green); font-size: 1.2rem; font-weight: 800; }
+        .guide-info p { margin: 4px 0 0; color: #777; font-size: 0.85rem; line-height: 1.4; }
+        .go-arrow { background: var(--matcha-green); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+        /* --- التقييمات --- */
+        .reviews-section { width: 90%; max-width: 650px; background: white; padding: 35px; border-radius: 40px; border: 2px solid var(--grace-pink); margin: 60px auto; text-align: center; }
+        .stars-container { direction: ltr; font-size: 2.2rem; margin-bottom: 15px; display: flex; justify-content: center; gap: 8px; }
+        .star { cursor: pointer; color: #ddd; }
+        .star.active { color: var(--gold); }
+        .review-input, .review-textarea { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #FFD1DC; border-radius: 18px; outline: none; box-sizing: border-box; }
+        .review-item { background: #FFF9FA; padding: 20px; border-radius: 25px; margin-top: 20px; border: 1px solid #ffe0e6; text-align: right; }
+
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); }
+        .modal-content { background: white; margin: 10vh auto; padding: 30px; border-radius: 35px; width: 85%; max-width: 420px; border: 3px solid var(--grace-pink); text-align: center; }
+        .total-box { margin-top: 15px; padding-top: 15px; border-top: 2px dashed var(--grace-pink); font-size: 1.2rem; font-weight: bold; color: var(--deep-pink); }
+    </style>
+</head>
+<body>
+
+    <div class="nav-header">
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-icon-btn">🏠</a>
+            <a href="how-to.html" class="nav-icon-btn guide-btn">🍵 الطريقة</a>
+        </div>
+        <div class="header-title">GRACE MATCHA</div>
+        <button onclick="showCart()" class="nav-icon-btn">🛒 (<span id="count">0</span>)</button>
+    </div>
+
+    <div class="category-container">
+        <div class="category-title">🍵 Matcha Corner</div>
+        <div class="grid" id="grid-matcha"></div>
+
+      
+
+        <div class="category-title">🍓 Syrups</div>
+        <div class="grid" id="grid-syrup"></div>
+
+        <div class="category-title">🥄 Tools</div>
+        <div class="grid" id="grid-tools"></div>
+    </div>
+
+    <!-- البطاقة المحدثة: مشاهدة الدليل قبل التعليقات -->
+     <div class="promo-banner">
+            <h3 style="color: var(--matcha-green); margin-top: 0;">هل تعرفين سر الرغوة المثالية؟ ✨</h3>
+            <p style="font-size: 0.9rem; color: #666;">اكتشفي دليل غريس لتحضير كوب ماتشا يفوق المقاهي.</p>
+            <a href="how-to.html" class="buy-btn" style="background: var(--matcha-green); text-decoration: none; display: inline-block; width: auto; padding: 10px 30px;">مشاهدة دليل التحضير 🍵</a>
+        </div>
+    </a>
+
+    <div class="reviews-section">
+        <h3 style="color: var(--deep-pink);">شاركينا تجربتك ✨</h3>
+        <div class="stars-container" id="star-rating">
+            <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+        </div>
+        <input type="text" id="revName" class="review-input" placeholder="اسمك">
+        <textarea id="revMsg" class="review-textarea" rows="3" placeholder="تعليقك..."></textarea>
+        <button class="buy-btn" onclick="submitReview()">نشر التعليق 🌸</button>
+        <div id="reviews-display-list"></div>
+    </div>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <h2 style="color: var(--deep-pink);">سلة التسوق 🛍️</h2>
+            <div id="cart-items-list" style="max-height:200px; overflow-y:auto; margin-bottom:10px;"></div>
+            <div class="total-box">المجموع: <span id="total-val">0</span> ريال</div>
+            <input type="text" id="custName" class="review-input" placeholder="الاسم">
+            <input type="text" id="custCity" class="review-input" placeholder="المدينة">
+            <button onclick="sendWA()" class="buy-btn" style="background:#25D366;">تأكيد عبر واتساب ✅</button>
+            <p onclick="closeCart()" style="cursor:pointer; color:#999; margin-top:15px;">إغلاق</p>
+        </div>
+    </div>
+
+    <script>
+        const products = {
+            matcha: [
+                { name: "Matcha Ceremonial", price: 120, desc: "درجة احتفالية فاخرة من مزارع أوجي باليابان." },
+                { name: "Grace Royal Box", price: 290, desc: "صندوق الملكي: ماتشا 30 جرام مع طقم التحضير." },
+                { name: "Premium Matcha", price: 150, desc: "ماتشا مختارة بعناية بلونها الفسفوري." },
+                { name: "Mini Matcha Box", price: 95, desc: "بوكس التجربة: عبوة صغيرة مع خفاقة مجانية." }
+            ],
+            syrup: [
+                { name: "Strawberry Syrup", price: 35, desc: "سيروب الفراولة للماتشا الوردي." },
+                { name: "Caramel Syrup", price: 35, desc: "نكهة الكراميل المملح الدافئة." },
+                { name: "Vanilla Syrup", price: 35, desc: "فانيليا مدغشقر النقية والناعمة." },
+                { name: "Blueberry Syrup", price: 40, desc: "نكهة التوت الأزرق المنعشة." }
+            ],
+            tools: [
+                { name: "Electric Whisk", price: 65, desc: "خفاقة كهربائية قوية لرغوة كثيفة." },
+                { name: "Bamboo Whisk", price: 45, desc: "خفاقة البامبو التقليدية الأصلية." },
+                { name: "Grace Glass Cup", price: 50, desc: "كوب زجاجي مزدوج يحفظ البرودة." },
+                { name: "Matcha Scale", price: 75, desc: "ميزان رقمي دقيق جداً للماتشا." }
+            ]
+        };
+
+        let cart = [];
+        let selectedRating = 0;
+
+        function render() {
+            const icons = { matcha: "🍵", syrup: "🍓", tools: "🥄" };
+            for (let cat in products) {
+                const container = document.getElementById(`grid-${cat}`);
+                if (container) {
+                    container.innerHTML = products[cat].map(p => `
+                        <div class="card">
+                            <div class="product-icon-box">${icons[cat]}</div>
+                            <div class="product-name">${p.name}</div>
+                            <div class="product-desc">${p.desc}</div>
+                            <div class="price">${p.price} ريال</div>
+                            <button class="buy-btn" onclick="addToCart('${p.name}', ${p.price})">إضافة للسلة</button>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            document.getElementById('count').innerText = cart.length;
+            alert("تمت الإضافة للسلة! 🌸");
+        }
+
+        function showCart() {
+            document.getElementById('cartModal').style.display = 'block';
+            let total = 0;
+            const list = document.getElementById('cart-items-list');
+            list.innerHTML = cart.map((item, i) => {
+                total += item.price;
+                return `<div style="display:flex; justify-content:space-between; padding:8px; border-bottom:1px solid #eee;">
+                    <span>${item.name}</span>
+                    <span>${item.price} ريال <span onclick="del(${i})" style="cursor:pointer; color:red;">❌</span></span>
+                </div>`;
+            }).join('');
+            document.getElementById('total-val').innerText = total;
+        }
+
+        function del(i) { cart.splice(i,1); document.getElementById('count').innerText = cart.length; showCart(); }
+        function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
+        
+        function sendWA() {
+            const n = document.getElementById('custName').value;
+            const c = document.getElementById('custCity').value;
+            const total = document.getElementById('total-val').innerText;
+            if(!n || !c || cart.length === 0) return alert("لطفاً أكملي البيانات");
+            let itemsText = cart.map(it => it.name).join('%0A- ');
+            window.location.href = `https://wa.me/966XXXXXXXXX?text=طلب جديد من Grace Matcha:%0Aالاسم: ${n}%0Aالمدينة: ${c}%0Aالطلبات:%0A- ${itemsText}%0A%0Aالمجموع الكلي: ${total} ريال`;
+        }
+
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(s => {
+            s.onclick = function() {
+                selectedRating = this.getAttribute('data-value');
+                stars.forEach(st => st.classList.remove('active'));
+                for(let i=0; i<selectedRating; i++) stars[i].classList.add('active');
+            }
+        });
+
+        function submitReview() {
+            const name = document.getElementById('revName').value;
+            const msg = document.getElementById('revMsg').value;
+            if(!name || !msg || selectedRating == 0) return alert("أكملي التقييم");
+            const item = document.createElement('div');
+            item.className = 'review-item';
+            item.innerHTML = `<div>${'★'.repeat(selectedRating)}${'☆'.repeat(5-selectedRating)}</div><b>${name}</b><p>${msg}</p>`;
+            document.getElementById('reviews-display-list').prepend(item);
+            document.getElementById('revName').value = ""; document.getElementById('revMsg').value = "";
+            selectedRating = 0; stars.forEach(st => st.classList.remove('active'));
+        }
+
+        window.onload = render;
+    </script>
+</body>
+</html>
